@@ -1,5 +1,7 @@
 # Provisioner
 
+[![Build status](https://secure.travis-ci.org/wanelo/provisioner.png)](http://travis-ci.org/wanelo/provisioner)
+
 Provision clusters of hosts in the cloud based on rules defined in a convenient yml file.
 
 ## Installation
