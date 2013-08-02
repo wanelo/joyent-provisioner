@@ -20,6 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
+To provision a specific host
+provision -n 3 -t redis-cluster -c production.yml
+
+To provision all hosts for a template
+provision -t redis-cluster -c production.yml
+
+Only show the commands
+provision -t redis-cluster -c production.yml --dry-run
+
+For help
+provision -h
+
 
 ## Contributing
 

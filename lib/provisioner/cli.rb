@@ -3,7 +3,6 @@ require 'mixlib/cli'
 module Provisioner
   class CLI
     include Mixlib::CLI
-    include Provisioner::Helper::Exit
 
     class << self
 
@@ -16,7 +15,6 @@ module Provisioner
         @commands[subclass.name.split("::").last.downcase] = subclass
 
         subclass.instance_eval do
-
           option :config_file,
                  short: '-c CONFIG_FILE',
                  long: '--config CONFIG_FILE',
@@ -31,6 +29,32 @@ module Provisioner
                  required: false,
                  default: false
 
+          option :template,
+                 short: '-t TEMPLATE',
+                 long: '--template TEMPLATE',
+                 description: 'Template name',
+                 required: true
+
+          option :number,
+                 short: '-n NUMBER',
+                 long: '--number NUMBER',
+                 description: 'Ruby range or a number for the host, ie 3 or 1..3 or [2,4,6]',
+                 required: false
+
+          option :dry,
+                 long: '--dry-run',
+                 description: 'Dry runs and prints all commands without executing them',
+                 boolean: true,
+                 required: false
+
+          option :help,
+                 short: '-h',
+                 long: '--help',
+                 description: 'Show this message',
+                 on: :tail,
+                 boolean: true,
+                 show_options: true,
+                 exit: 0
         end
       end
 
@@ -41,7 +65,8 @@ module Provisioner
     def run(args = ARGV)
       @args = args
       validate!
-      command_class = Provisioner::CLI.command(args.shift)
+      command_name = ['bootstrap'].include?(args[0]) ? args.shift : 'host'
+      command_class = Provisioner::CLI.command(command_name)
       command_class.new.run(args)
     end
 
@@ -54,7 +79,7 @@ module Provisioner
     private
 
     def validate!
-      error_exit_with_msg('No command given') if args.empty?
+      Provisioner::Exit.with_message('No command given') if args.empty?
       @command = args.first
     end
 
