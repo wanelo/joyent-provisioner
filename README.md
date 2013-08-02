@@ -20,7 +20,6 @@ Or install it yourself as:
 
 ## Usage
 
-provision cluster --type memcached --config production.yml
 
 ## Contributing
 

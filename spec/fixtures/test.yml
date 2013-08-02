@@ -1,0 +1,16 @@
+global:
+  environment: test
+  host_suffix: test
+  log_dir: ./tmp
+  ssh_user: ops
+
+templates:
+  memcached-sessions:
+    image: 9ec5c0c-a941-11e2-a7dc-57a6b041988f
+    flavor: "g3-highmemory-17.125-smartos"
+    distro: smartos-base64
+    networks: "42325ea0-eb62-44c1-8eb6-0af3e2f83abc,c8cde927-6277-49ca-82a3-741e8b23b02f"
+    run_list: "role[joyent]"
+    host_sequence: 1..2
+    host_prefix: memcached-sessions
+
