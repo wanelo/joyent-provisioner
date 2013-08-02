@@ -43,11 +43,7 @@ module Provisioner
       end
 
       def shellout(command)
-        if options[:dry_run]
-          puts command
-        else
-          system(command)
-        end
+        system(command)
       end
     end
   end
