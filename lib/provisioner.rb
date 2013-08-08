@@ -1,6 +1,8 @@
 module Provisioner
 end
 
+require 'colorize'
+
 require_relative 'provisioner/usage'
 require_relative 'provisioner/logger'
 require_relative 'provisioner/helper'

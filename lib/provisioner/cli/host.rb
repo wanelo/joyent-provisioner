@@ -10,7 +10,9 @@ class Provisioner::CLI::Host < Provisioner::CLI
     enable_logger if config[:debug]
 
     if config[:dry]
-      puts provisioner_command.shell_commands
+      provisioner_command.shell_commands.each do |command|
+        puts command.colorize(:green)
+      end
     else
       provisioner_command.run
     end

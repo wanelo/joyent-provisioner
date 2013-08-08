@@ -14,6 +14,7 @@ describe Provisioner::Command::Bootstrap do
           networks: '42325ea0-eb62-44c1-8eb6-0af3e2f83abc,c8cde927-6277-49ca-82a3-741e8b23b02f',
           host_sequence: '1..2',
           host_suffix: 'test',
+          host_presuffix: 'c1',
           host_prefix: 'memcached-sessions',
           environment: 'test',
           log_dir: './tmp',
@@ -25,10 +26,10 @@ describe Provisioner::Command::Bootstrap do
           'knife bootstrap 1.2.3.4',
           '--distro smartos-base64',
           '--environment test',
-          '--node-name memcached-sessions001.test',
+          '--node-name memcached-sessions001.c1.test',
           '--run-list role[joyent]',
           '--ssh-user ops',
-          '2>&1 > ./tmp/memcached-sessions001.test_provision.log &'
+          '2>&1 > ./tmp/memcached-sessions001.c1.test_provision.log &'
       ].join(' ') }
 
       it 'returns command string' do
