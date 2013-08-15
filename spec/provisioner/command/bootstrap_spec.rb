@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'provisioner'
 
 describe Provisioner::Command::Bootstrap do
   describe '#shell_commands' do

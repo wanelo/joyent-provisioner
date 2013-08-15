@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'provisioner/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "provisioner"
+  spec.name          = "joyent-provisioner"
   spec.version       = Provisioner::VERSION
-  spec.authors       = ["Konstantin Gredeskoul", "Blake Irvin"]
-  spec.email         = ["kig@wanelo.com", "bixu@wanelo.com"]
+  spec.authors       = ["Konstantin Gredeskoul", "Blake Irvin", "Richard Millan"]
+  spec.email         = ["kig@wanelo.com", "bixu@wanelo.com", "richard@wanelo.com"]
   spec.description   = %q{Wrapper gem around provisioning clusters of servers on Joyent cloud}
   spec.summary       = %q{Wrapper gem around provisioning clusters of servers on Joyent cloud}
   spec.homepage      = ""

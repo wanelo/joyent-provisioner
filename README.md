@@ -1,4 +1,4 @@
-# Provisioner
+# Joyent Cloud Provisioner
 
 [![Build status](https://secure.travis-ci.org/wanelo/provisioner.png)](http://travis-ci.org/wanelo/provisioner)
 
@@ -15,7 +15,7 @@ with ease.
 
 Add this line to your application's Gemfile:
 
-    gem 'provisioner'
+    gem 'joyent-provisioner'
 
 And then execute:
 
@@ -23,7 +23,7 @@ And then execute:
 
 Or install it into your ruby environment as follows:
 
-    $ gem install provisioner
+    $ gem install joyent-provisioner
 
 ## Configuration
 
@@ -89,19 +89,19 @@ Usage: provisioner provision --config <path-to-config>.yml [options]
 To provision a specific host
 
 ```bash
-provision -n 3 -t redis-cluster -c production.yml
+provisioner provision -n 3 -t redis-cluster -c production.yml
 ```
 
 To provision all hosts defined by host_sequence in a template
 
 ```bash
-provision -t redis-cluster -c production.yml
+provisioner provision -t redis-cluster -c production.yml
 ```
 
 Only show the commands that should be run without actually running them:
 
 ```bash
-provisioner -t redis-cluster -c production.yml --dry-run
+provisioner provision -t redis-cluster -c production.yml --dry-run
 ```
 
 ### Bootstrapping Hosts

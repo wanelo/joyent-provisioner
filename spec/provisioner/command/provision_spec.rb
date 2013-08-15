@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'provisioner'
 
 describe Provisioner::Command::Provision do
   let(:configuration) { Provisioner::Configuration.from_path('spec/fixtures/test.yml') }
