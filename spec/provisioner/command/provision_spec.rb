@@ -1,14 +1,14 @@
 require 'spec_helper'
 require 'provisioner'
 
-describe Provisioner::Command::Host do
+describe Provisioner::Command::Provision do
   let(:configuration) { Provisioner::Configuration.from_path('spec/fixtures/test.yml') }
 
   describe '#shell_commands' do
 
     context 'host is specified' do
 
-      let(:subject) { Provisioner::Command::Host.new(template_configuration, '1') }
+      let(:subject) { Provisioner::Command::Provision.new(template_configuration, '1') }
       let(:expected_command) { [
           'knife joyent server create',
           '--image 9ec5c0c-a941-11e2-a7dc-57a6b041988f',
@@ -49,7 +49,7 @@ describe Provisioner::Command::Host do
     end
 
     context 'host number is not specified' do
-      let(:subject) { Provisioner::Command::Host.new(template_configuration) }
+      let(:subject) { Provisioner::Command::Provision.new(template_configuration) }
       let(:template_configuration) { configuration.for_template('memcached-sessions') }
 
       it 'returns an array of commands based on the configuration' do

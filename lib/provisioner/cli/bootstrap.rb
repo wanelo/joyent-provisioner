@@ -3,7 +3,7 @@ require 'pry'
 
 class Provisioner::CLI::Bootstrap < Provisioner::CLI
 
-  banner 'Usage: provision bootstrap [options] --config config.yml'
+  banner 'Usage: provisioner bootstrap --config <path-to-config>.yml [options] '
 
   def run(argv = ARGV)
     parse_options argv

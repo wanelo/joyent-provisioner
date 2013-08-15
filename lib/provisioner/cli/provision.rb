@@ -1,9 +1,9 @@
 require 'mixlib/cli'
 require 'pry'
 
-class Provisioner::CLI::Host < Provisioner::CLI
+class Provisioner::CLI::Provision < Provisioner::CLI
 
-  banner 'Usage: provision [options] --config config.yml'
+  banner 'Usage: provisioner provision --config <path-to-config>.yml [options] '
 
   def run(argv = ARGV)
     parse_options argv
@@ -19,7 +19,7 @@ class Provisioner::CLI::Host < Provisioner::CLI
   end
 
   def provisioner_command
-    Provisioner::Command::Host.new(template_configuration.for_template(config[:template]), config[:number])
+    Provisioner::Command::Provision.new(template_configuration.for_template(config[:template]), config[:number])
   end
 
 end

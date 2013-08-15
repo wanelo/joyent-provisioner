@@ -56,5 +56,5 @@ module Provisioner
   end
 end
 
-require_relative 'host'
+require_relative 'provision'
 require_relative 'bootstrap'

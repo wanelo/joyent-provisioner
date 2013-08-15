@@ -1,6 +1,6 @@
 module Provisioner
   module Command
-    class Host < Base
+    class Provision < Base
 
       private
 

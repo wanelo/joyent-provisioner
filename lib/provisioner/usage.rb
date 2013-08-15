@@ -1,6 +1,11 @@
+require_relative 'cli'
 module Provisioner
-  USAGE = %q{Usage: provision (host|cluster) [options] --config config.yml
+  USAGE = <<-EOF
 
-  host    -- provision a single host defined by a config
-}
+Usage:
+  [bundle exec] provisioner command ...
+
+Where the command is one of the following:
+  #{Provisioner::CLI.supported_commands.join(', ')}
+EOF
 end

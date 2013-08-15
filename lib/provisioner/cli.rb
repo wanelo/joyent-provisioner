@@ -5,12 +5,19 @@ module Provisioner
     include Mixlib::CLI
 
     class << self
+      attr_reader :commands
 
-      def command(name)
+      # Returns a command class by it's name
+      def command name
         @commands[name]
       end
 
-      def inherited(subclass)
+      # Returns array of registered command names
+      def supported_commands
+        commands.keys
+      end
+
+      def inherited subclass
         @commands ||= {}
         @commands[subclass.name.split("::").last.downcase] = subclass
 
@@ -57,16 +64,16 @@ module Provisioner
                  exit: 0
         end
       end
-
     end
 
     attr_reader :args
 
-    def run(args = ARGV)
+    def run args = ARGV
       @args = args
       validate!
-      command_name = ['bootstrap'].include?(args[0]) ? args.shift : 'host'
+      command_name = args.shift
       command_class = Provisioner::CLI.command(command_name)
+      Provisioner::Exit.with_message("Command '#{command_name}' not found.") if command_class.nil?
       command_class.new.run(args)
     end
 
@@ -83,7 +90,7 @@ module Provisioner
       @command = args.first
     end
 
-    def generate_config(argv)
+    def generate_config argv = []
       parse_options argv
       config[:configuration] = Provisioner::Configuration.from_path(config[:config_file])
     end
@@ -96,5 +103,5 @@ module Provisioner
   end
 end
 
-require 'provisioner/cli/host'
+require 'provisioner/cli/provision'
 require 'provisioner/cli/bootstrap'
