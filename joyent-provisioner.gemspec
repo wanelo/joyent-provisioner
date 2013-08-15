@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "joyent-provisioner"
   spec.version       = Provisioner::VERSION
   spec.authors       = ["Konstantin Gredeskoul", "Blake Irvin", "Richard Millan"]
-  spec.email         = ["kig@wanelo.com", "bixu@wanelo.com", "richard@wanelo.com"]
+  spec.email         = ["kigster@gmail.com", "bixu@wanelo.com", "richardiux@gmail.com"]
   spec.description   = %q{Wrapper gem around provisioning clusters of servers on Joyent cloud}
   spec.summary       = %q{Wrapper gem around provisioning clusters of servers on Joyent cloud}
   spec.homepage      = ""
