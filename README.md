@@ -1,6 +1,6 @@
 # Joyent Cloud Provisioner
 
-[![Build status](https://secure.travis-ci.org/wanelo/provisioner.png)](http://travis-ci.org/wanelo/provisioner)
+[![Build status](https://secure.travis-ci.org/wanelo/joyent-provisioner.png)](http://travis-ci.org/wanelo/joyent-provisioner)
 
 This gem provides a ruby class and a command line tool to simplify provisioning of clusters of hosts in the
 cloud environment, based on rules defined in a convenient yml file. It specifically supports Joyent Cloud,
