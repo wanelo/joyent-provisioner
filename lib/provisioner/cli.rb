@@ -48,6 +48,12 @@ module Provisioner
                  description: 'Ruby range or a number for the host, ie 3 or 1..3 or [2,4,6]',
                  required: false
 
+          option :ssh_user,
+                 short: '-l SSH_USERNAME',
+                 long: '--user SSH_USERNAME',
+                 description: 'SSH user used to connect to server (overrides yml configuration)',
+                 required: false
+
           option :dry,
                  long: '--dry-run',
                  description: 'Dry runs and prints all commands without executing them',

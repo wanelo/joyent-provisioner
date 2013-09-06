@@ -5,11 +5,12 @@ module Provisioner
                     :host_sequence, :host_prefix, :environment, :host_suffix,
                     :host_presuffix, :log_dir, :host_number, :ssh_user
 
-      def initialize(template_configuration, host_number=nil)
+      def initialize(template_configuration, host_number=nil, ssh_user=nil)
         @host_number = host_number
         template_configuration.each_pair do |key, value|
           self.send("#{key}=", value)
         end
+        @ssh_user = ssh_user if ssh_user
         raise "Log path is required" unless @log_dir
         Dir.mkdir(log_dir) unless Dir.exists?(log_dir)
       end

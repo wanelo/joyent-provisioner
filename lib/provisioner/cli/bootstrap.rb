@@ -19,7 +19,7 @@ class Provisioner::CLI::Bootstrap < Provisioner::CLI
   end
 
   def provisioner_command
-    Provisioner::Command::Bootstrap.new(template_configuration.for_template(config[:template]), config[:number])
+    Provisioner::Command::Bootstrap.new(template_configuration.for_template(config[:template]), config[:number], config[:ssh_user])
   end
 
 end
