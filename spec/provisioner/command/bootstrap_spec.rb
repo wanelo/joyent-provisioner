@@ -78,6 +78,25 @@ describe Provisioner::Command::Bootstrap do
         expect(shell_commands[1]).to eq(expected_bootstrap_command)
       end
     end
+
+    context 'sudo is true' do
+      let(:subject) { Provisioner::Command::Bootstrap.new(template_configuration, number: '1', ssh_user: 'root', sudo: true) }
+
+      let(:expected_bootstrap_command) { [
+          'knife bootstrap 1.2.3.4',
+          '--distro smartos-base64',
+          '--environment test',
+          '--node-name memcached-sessions001.c1.test',
+          '--run-list role[joyent]',
+          '--ssh-user root',
+          '--sudo',
+          '2>&1 > ./tmp/memcached-sessions001.c1.test_provision.log &'
+      ].join(' ') }
+
+      it 'returns command string' do
+        expect(shell_commands[0]).to eq(expected_bootstrap_command)
+      end
+    end
   end
 end
 

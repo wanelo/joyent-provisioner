@@ -2,6 +2,10 @@ module Provisioner
   module Command
     class Bootstrap < Base
 
+      def use_sudo?
+        options[:sudo]
+      end
+
       private
 
       def shell_commands_for(number)
@@ -42,6 +46,7 @@ module Provisioner
 
           bootstrap_command << "--run-list #{context.run_list}" if context.run_list
           bootstrap_command << "--ssh-user #{context.ssh_user}"
+          bootstrap_command << '--sudo' if context.use_sudo?
           bootstrap_command << "2>&1 > #{context.log_dir}/#{name}_provision.log &"
           bootstrap_command.join(' ')
         end

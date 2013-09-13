@@ -12,6 +12,12 @@ class Provisioner::CLI::Bootstrap < Provisioner::CLI
          boolean: true,
          required: false
 
+  option :sudo,
+         long: '--sudo',
+         description: 'Execute bootstrap via sudo',
+         boolean: false,
+         required: false
+
   def run(argv = ARGV)
     parse_options argv
     enable_logger if config[:debug]
