@@ -7,7 +7,7 @@ describe Provisioner::Command::Provision do
 
     context 'host is specified' do
 
-      let(:subject) { Provisioner::Command::Provision.new(template_configuration, '1') }
+      let(:subject) { Provisioner::Command::Provision.new(template_configuration, number: '1') }
       let(:expected_command) { [
           'knife joyent server create',
           '--image 9ec5c0c-a941-11e2-a7dc-57a6b041988f',

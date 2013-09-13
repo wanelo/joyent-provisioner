@@ -5,6 +5,13 @@ class Provisioner::CLI::Bootstrap < Provisioner::CLI
 
   banner 'Usage: provisioner bootstrap --config <path-to-config>.yml [options] '
 
+  option :reset,
+         short: '-R',
+         long: '--reset',
+         description: 'Path to the config file (YML)',
+         boolean: true,
+         required: false
+
   def run(argv = ARGV)
     parse_options argv
     enable_logger if config[:debug]
@@ -19,7 +26,7 @@ class Provisioner::CLI::Bootstrap < Provisioner::CLI
   end
 
   def provisioner_command
-    Provisioner::Command::Bootstrap.new(template_configuration.for_template(config[:template]), config[:number], config[:ssh_user])
+    Provisioner::Command::Bootstrap.new(template_configuration.for_template(config[:template]), config)
   end
 
 end

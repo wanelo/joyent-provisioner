@@ -19,7 +19,7 @@ class Provisioner::CLI::Provision < Provisioner::CLI
   end
 
   def provisioner_command
-    Provisioner::Command::Provision.new(template_configuration.for_template(config[:template]), config[:number], config[:ssh_user])
+    Provisioner::Command::Provision.new(template_configuration.for_template(config[:template]), config)
   end
 
 end

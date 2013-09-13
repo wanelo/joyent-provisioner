@@ -7,7 +7,13 @@ module Provisioner
       def shell_commands_for(number)
         host = HostCommand.new(host_name(number), self)
 
-        [host.reset_command, host.bootstrap_command]
+        commands = []
+        commands << host.reset_command if reset_chef?
+        commands << host.bootstrap_command
+      end
+
+      def reset_chef?
+        options[:reset]
       end
 
       class HostCommand

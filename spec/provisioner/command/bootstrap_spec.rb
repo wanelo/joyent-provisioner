@@ -25,7 +25,7 @@ describe Provisioner::Command::Bootstrap do
 
     context 'host is specified' do
 
-      let(:subject) { Provisioner::Command::Bootstrap.new(template_configuration, '1') }
+      let(:subject) { Provisioner::Command::Bootstrap.new(template_configuration, number: '1') }
 
       let(:expected_bootstrap_command) { [
           'knife bootstrap 1.2.3.4',
@@ -38,13 +38,30 @@ describe Provisioner::Command::Bootstrap do
       ].join(' ') }
 
       it 'returns command string' do
-        expect(shell_commands[0]).to eq("ssh 1.2.3.4 -l ops 'sudo rm -rf /etc/chef'")
-        expect(shell_commands[1]).to eq(expected_bootstrap_command)
+        expect(shell_commands[0]).to eq(expected_bootstrap_command)
       end
     end
 
     context 'ssh user is overridden' do
-      let(:subject) { Provisioner::Command::Bootstrap.new(template_configuration, '1', 'root') }
+      let(:subject) { Provisioner::Command::Bootstrap.new(template_configuration, number: '1', ssh_user: 'root') }
+
+      let(:expected_bootstrap_command) { [
+          'knife bootstrap 1.2.3.4',
+          '--distro smartos-base64',
+          '--environment test',
+          '--node-name memcached-sessions001.c1.test',
+          '--run-list role[joyent]',
+          '--ssh-user root',
+          '2>&1 > ./tmp/memcached-sessions001.c1.test_provision.log &'
+      ].join(' ') }
+
+      it 'returns command string' do
+        expect(shell_commands[0]).to eq(expected_bootstrap_command)
+      end
+    end
+
+    context 'reset is true' do
+      let(:subject) { Provisioner::Command::Bootstrap.new(template_configuration, number: '1', ssh_user: 'root', reset: true) }
 
       let(:expected_bootstrap_command) { [
           'knife bootstrap 1.2.3.4',
