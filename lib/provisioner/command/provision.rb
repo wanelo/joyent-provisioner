@@ -1,3 +1,5 @@
+require 'json'
+
 module Provisioner
   module Command
     class Provision < Base
@@ -14,11 +16,19 @@ module Provisioner
             "--networks #{networks}",
             "--environment #{environment}",
             "--node-name #{host_name}",
-        ].join(' ')
+        ]
+
 
         log_path = "#{log_dir}/#{host_name}_provision.log"
-        command << " --run-list #{run_list}" if run_list
-        command << " 2>&1 > #{log_path} &"
+        command << "--run-list #{run_list}" if run_list
+        command << "--tags '#{encoded_tags}'" if tags
+        command << "2>&1 > #{log_path} &"
+
+        command.join(' ')
+      end
+
+      def encoded_tags
+        JSON.dump(tags)
       end
 
     end
