@@ -24,7 +24,7 @@ class Provisioner::CLI::Bootstrap < Provisioner::CLI
 
     if config[:dry]
       provisioner_command.shell_commands.each do |command|
-        puts command.colorize(:green)
+        puts command
       end
     else
       provisioner_command.run

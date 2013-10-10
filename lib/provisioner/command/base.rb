@@ -52,7 +52,7 @@ module Provisioner
 
       def shellout(command)
         puts "Running provision command:"
-        puts command.colorize(:green)
+        puts command
         system(command)
       end
     end
