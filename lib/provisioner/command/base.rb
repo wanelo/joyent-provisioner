@@ -38,8 +38,8 @@ module Provisioner
 
       def host_numbers
         @host_numbers ||= begin
-          return [host_number] if host_number
-          eval "(#{host_sequence}).to_a"
+          expr = host_number.nil? ? host_sequence : host_number
+          eval "(#{expr}).to_a"
         end
       end
 
