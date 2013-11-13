@@ -12,14 +12,16 @@ module Provisioner
     def self.ips
       @ips = {}
       server_list.each do |server|
-        hostname, ip = server.split(' ').compact
-        @ips[hostname] = ip
+        # example line
+        # 4330e738-2bca-ee10-f9a6-e9a1b3fcfdec  vpn001.prod running  virtualmachine  sdc:jpc:ubuntu-12.04:2.4.  g3-highcpu-1.75-kvm  9.12.42.172,10.100.114.217  1.75 GB  75 GB
+        zone, hostname, status, type, image, flavor, ips = server.split(/\s+/).compact
+        @ips[hostname] = (ips.split(',') || []).first
       end
       @ips
     end
 
     def self.server_list
-      @server_list ||= `knife joyent server list | awk '{print $2 " " $7}' | tail +2`.split("\n")
+      @server_list ||= `knife joyent server list | tail +2`.split("\n")
     end
   end
 end
