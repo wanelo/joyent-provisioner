@@ -6,6 +6,9 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'joyent-provisioner'
+require 'aruba-doubles'
+
+require 'support/aruba'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -17,4 +20,15 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  config.include ArubaDoubles
+
+  config.before(:each) do
+    ArubaDoubles::Double.setup
+  end
+
+  config.after(:each) do
+    ArubaDoubles::Double.teardown
+    history.clear
+  end
 end
