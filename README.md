@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/joyent-provisioner.png)](http://badge.fury.io/rb/joyent-provisioner)
 [![Build status](https://secure.travis-ci.org/wanelo/joyent-provisioner.png)](http://travis-ci.org/wanelo/joyent-provisioner)
+[![Code Climate](https://codeclimate.com/github/wanelo/joyent-provisioner.png)](https://codeclimate.com/github/wanelo/joyent-provisioner)
 
 This gem provides a ruby class and a command line tool to simplify provisioning of clusters of hosts in the
 cloud environment, based on rules defined in a convenient yml file. It specifically supports Joyent Cloud,
