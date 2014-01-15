@@ -22,7 +22,7 @@ module Provisioner
     end
 
     def self.server_list
-      @server_list ||= `knife joyent server list | tail +2 | grep -v "Total  "`.split("\n")
+      @server_list ||= `knife joyent server list | tail -n +2 | grep -v "Total  "`.split("\n")
     end
   end
 end
