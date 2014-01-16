@@ -18,19 +18,6 @@ class Provisioner::CLI::Bootstrap < Provisioner::CLI
          boolean: false,
          required: false
 
-  def run(argv = ARGV)
-    parse_options argv
-    enable_logger if config[:debug]
-
-    if config[:dry]
-      provisioner_command.shell_commands.each do |command|
-        puts command
-      end
-    else
-      provisioner_command.run
-    end
-  end
-
   def provisioner_command
     Provisioner::Command::Bootstrap.new(template_configuration.for_template(config[:template]), config)
   end

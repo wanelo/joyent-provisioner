@@ -69,6 +69,22 @@ module Provisioner
                  show_options: true,
                  exit: 0
         end
+
+        subclass.class_eval do
+          def run(argv = ARGV)
+            parse_options argv
+            enable_logger if config[:debug]
+
+            if config[:dry]
+              provisioner_command.shell_commands.each do |command|
+                puts command
+              end
+            else
+              provisioner_command.run
+            end
+          end
+
+        end
       end
     end
 
