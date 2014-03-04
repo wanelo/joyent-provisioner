@@ -23,6 +23,7 @@ module Provisioner
         command << "--run-list #{run_list}" if run_list
         command << "--tags '#{encoded_tags}'" if tags
         command << "2>&1 > #{log_path} &"
+        command << "--ssh-user '#{ssh_user}'" if ssh_user
 
         command.join(' ')
       end
