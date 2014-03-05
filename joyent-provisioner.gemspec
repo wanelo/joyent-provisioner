@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'mixlib-cli'
   spec.add_dependency 'chef'
-  spec.add_dependency 'knife-joyent', '>= 0.3.4'
+  spec.add_dependency 'knife-joyent', '>= 0.4.5'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake'
