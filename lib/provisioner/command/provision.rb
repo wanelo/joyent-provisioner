@@ -19,7 +19,7 @@ module Provisioner
 
 
         log_path = "#{log_dir}/#{host_name}_provision.log"
-        commadn << "--distro #{distro}" if distro
+        command << "--distro #{distro}" if distro
         command << "--run-list #{run_list}" if run_list
         command << "--ssh-user #{ssh_user}" if ssh_user
         command << "--tags '#{encoded_tags}'" if tags
