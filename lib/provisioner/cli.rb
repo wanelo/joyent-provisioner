@@ -60,6 +60,13 @@ module Provisioner
                  boolean: true,
                  required: false
 
+          option :provisioner_type,
+                 description: 'The type of provisioner that will be used',
+                 long: '--provisioner-type PROVISIONER_TYPE',
+                 short: '-p PROVISIONER_TYPE',
+                 string: true,
+                 default: 'knife'
+
           option :help,
                  short: '-h',
                  long: '--help',
@@ -76,11 +83,11 @@ module Provisioner
             enable_logger if config[:debug]
 
             if config[:dry]
-              provisioner_command.shell_commands.each do |command|
+              provisioner_command(config[:provisioner_type]).shell_commands.each do |command|
                 puts command
               end
             else
-              provisioner_command.run
+              provisioner_command(config[:provisioner_type]).run
             end
           end
 
