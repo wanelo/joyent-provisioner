@@ -59,5 +59,5 @@ module Provisioner
   end
 end
 
-require_relative 'provision'
+require_relative 'provisioners/knife'
 require_relative 'bootstrap'
