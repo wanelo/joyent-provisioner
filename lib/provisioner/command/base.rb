@@ -4,7 +4,7 @@ module Provisioner
       attr_accessor :image, :flavor, :distro, :networks, :run_list,
                     :host_sequence, :host_prefix, :environment, :host_suffix,
                     :host_presuffix, :log_dir, :host_number, :options, :ssh_user,
-                    :tags
+                    :tags, :name, :dataset, :package
 
       def initialize(template_configuration, options = {})
         @options = options
@@ -59,5 +59,6 @@ module Provisioner
   end
 end
 
-require_relative 'provision'
+require_relative 'provisioners/knife'
+require_relative 'provisioners/sdc'
 require_relative 'bootstrap'
