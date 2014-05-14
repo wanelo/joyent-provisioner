@@ -15,6 +15,7 @@ describe Provisioner::Command::Provision do
           '--environment test',
           '--node-name memcached-sessions001.test',
           '--run-list role[joyent]',
+          '--ssh-user ops', 
       ] }
 
       let(:expected_command) { [
@@ -34,6 +35,7 @@ describe Provisioner::Command::Provision do
             host_prefix: 'memcached-sessions',
             environment: 'test',
             log_dir: './tmp',
+            ssh_user: 'ops',
             run_list: 'role[joyent]'
         } }
 
