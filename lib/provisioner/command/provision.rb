@@ -12,7 +12,6 @@ module Provisioner
             "knife joyent server create",
             "--image #{image}",
             "--flavor #{flavor}",
-            "--distro #{distro}",
             "--networks #{networks}",
             "--environment #{environment}",
             "--node-name #{host_name}",
@@ -20,6 +19,7 @@ module Provisioner
 
 
         log_path = "#{log_dir}/#{host_name}_provision.log"
+        command << "--distro #{distro}" if distro
         command << "--run-list #{run_list}" if run_list
         command << "--ssh-user #{ssh_user}" if ssh_user
         command << "--tags '#{encoded_tags}'" if tags
