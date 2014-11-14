@@ -20,7 +20,7 @@ describe Provisioner::Command::Bootstrap do
     let(:shell_commands) { subject.shell_commands }
 
     before do
-      Provisioner::Command::Bootstrap::HostCommand.any_instance.stub(:ip_for_host) { '1.2.3.4' }
+      allow_any_instance_of(Provisioner::Command::Bootstrap::HostCommand).to receive(:ip_for_host) { '1.2.3.4' }
     end
 
     context 'host is specified' do
