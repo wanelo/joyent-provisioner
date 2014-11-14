@@ -21,12 +21,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'mixlib-cli'
   spec.add_dependency 'chef'
   spec.add_dependency 'knife-joyent', '>= 0.3.4'
-
-  spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'guard'
-  spec.add_development_dependency 'guard-rspec'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'pry-nav'
-  spec.add_development_dependency 'aruba-doubles'
 end
