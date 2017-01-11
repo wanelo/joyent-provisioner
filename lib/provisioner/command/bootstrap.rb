@@ -39,7 +39,7 @@ module Provisioner
           bootstrap_command = [
               'knife bootstrap',
               ip_for_host,
-              "--distro #{context.distro}",
+              "--bootstrap-template #{context.distro}",
               "--environment #{context.environment}",
               "--node-name #{name}",
           ]

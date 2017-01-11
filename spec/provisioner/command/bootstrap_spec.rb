@@ -29,7 +29,7 @@ describe Provisioner::Command::Bootstrap do
 
       let(:expected_bootstrap_command) { [
           'knife bootstrap 1.2.3.4',
-          '--distro smartos-base64',
+          '--bootstrap-template smartos-base64',
           '--environment test',
           '--node-name memcached-sessions001.c1.test',
           '--run-list role[joyent]',
@@ -47,7 +47,7 @@ describe Provisioner::Command::Bootstrap do
 
       let(:expected_bootstrap_command) { [
           'knife bootstrap 1.2.3.4',
-          '--distro smartos-base64',
+          '--bootstrap-template smartos-base64',
           '--environment test',
           '--node-name memcached-sessions001.c1.test',
           '--run-list role[joyent]',
@@ -65,7 +65,7 @@ describe Provisioner::Command::Bootstrap do
 
       let(:expected_bootstrap_command) { [
           'knife bootstrap 1.2.3.4',
-          '--distro smartos-base64',
+          '--bootstrap-template smartos-base64',
           '--environment test',
           '--node-name memcached-sessions001.c1.test',
           '--run-list role[joyent]',
@@ -84,7 +84,7 @@ describe Provisioner::Command::Bootstrap do
 
       let(:expected_bootstrap_command) { [
           'knife bootstrap 1.2.3.4',
-          '--distro smartos-base64',
+          '--bootstrap-template smartos-base64',
           '--environment test',
           '--node-name memcached-sessions001.c1.test',
           '--run-list role[joyent]',
